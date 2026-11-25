@@ -71,6 +71,30 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 - A3 của TV1: chi phí mỗi việc thành công là 2.696 đ cho `noi_dia`, 8.221 đ cho `hang_nang`, 22.515 đ cho `quoc_te` và 10.215 đ cho `doi_tac` (simulated).
 - Tệp liên quan: `src/lab13.py`, `report/team/pilot_plan.yaml`, `report/team/chi_so.md`. Chạy Python và kiểm tra YAML bằng `yaml.safe_load` còn chờ môi trường có Python.
 
+
+## Đào Vũ Minh Khánh - 2A202603878
+
+### Phần việc phụ trách
+
+- Nhiệm vụ C (bảng lỗi và cách khắc phục): `report/team/bang_loi.md`. Chuẩn bị và chấm chéo Gate 2a: `report/team/phieu_cham.md`. Chạy bộ lệnh kiểm tra checklist `SUBMISSION.md` trước khi nộp.
+
+### Đóng góp cụ thể
+
+- Tự gắn nhãn độc lập 20 ca lỗi theo 5 loại Google PAIR (bộ nhãn người 1), ghi vào `report/team/bang_loi.md`.
+- So hai bộ nhãn, tính đồng thuận 18/20 = 90% (ngưỡng 80%); với 2 ca không trùng (ca 6, ca 17) chốt nhãn thống nhất và viết quy tắc phân biệt theo nguyên nhân gốc.
+- Điền bảng khắc phục 5 ca đủ 5 loại (ca 1, 20, 16, 11, 5): mỗi dòng có event hoặc cách kiểm tra, ngưỡng, tần suất và một vai trò phụ trách.
+- Chuyển tóm tắt bảng lỗi (4 · 5 · 4 · 4 · 3 ca theo 5 loại) cho thành viên 4 điền mục 5 của `report/team/ho_so_launch_v0.md`.
+- Điền trước `report/team/phieu_cham.md` (thông tin nhóm, câu hỏi cho đội trình) và chuẩn bị bảng tìm bằng chứng cho ba tiêu chí C6–C8.
+
+### Bằng chứng
+
+- Commit `3968c3d` "TV3: bang_loi.md".
+- `report/team/bang_loi.md`: 2 bộ nhãn 20 ca, đồng thuận 18/20 = 90%, quy tắc cho ca 6 và ca 17, bảng khắc phục 5 dòng đủ 5 loại.
+- Phân bố nhãn thống nhất: Do người dùng 4 ca (1, 6, 9, 14) · Hệ thống 5 ca (2, 7, 8, 15, 20) · Ngữ cảnh 4 ca (3, 10, 16, 18) · Giới hạn hệ thống 4 ca (4, 11, 13, 19) · Ngầm 3 ca (5, 12, 17); khớp 20/20 với bảng tham khảo trong tài liệu hướng dẫn (ngưỡng 16/20).
+- Bộ nhãn khớp 18/20 với bảng tham khảo; lệch ở ca 6 (tôi gắn Hệ thống) và ca 17 (tôi gắn Giới hạn hệ thống).
+- `report/team/phieu_cham.md`: điểm và quyết định của hội đồng ghi tại buổi duyệt chéo 17:00.
+
+
 ## Thành viên còn lại
 
 ### Phần việc phụ trách

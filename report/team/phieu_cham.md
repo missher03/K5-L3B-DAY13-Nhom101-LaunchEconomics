@@ -2,7 +2,7 @@
 
 Nhóm số n chấm nhóm số n + 1; nhóm cuối chấm nhóm 1. Chấm theo bằng chứng trong hồ sơ, không theo cách trình bày: một đề xuất No-go có lý do bằng số được điểm cao hơn một đề xuất Go bỏ qua con số bất lợi.
 
-- Nhóm chấm (hội đồng): ...
+- Nhóm chấm (hội đồng): Nhóm 101 - Đào Vũ Minh Khánh, Nguyễn Văn Quốc
 - Nhóm được chấm: ...
 
 | Tiêu chí | 0 điểm | 5 điểm | 10 điểm | Điểm | Lý do (có số) |
@@ -16,6 +16,6 @@ Nhóm số n chấm nhóm số n + 1; nhóm cuối chấm nhóm 1. Chấm theo b
 
 **Lý do:** ...
 
-**Một câu hỏi cho đội trình:** ...
+**Một câu hỏi cho đội trình:** Pilot chia theo nhân viên hay depot, mỗi nhóm được bao nhiêu cụm? Nếu dưới 20 cụm thì nhóm chấp nhận đánh đổi gì, và luật dừng nào (ngưỡng, thời hạn, ai có quyền dừng) bảo vệ quyết định đó?
 
 **Câu trả lời của đội trình (ghi lại tại buổi):** ...
