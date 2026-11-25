@@ -5,6 +5,7 @@
 - Họ tên: Nguyễn Văn Quốc
 - MSSV: 2A202603864
 - Email: quoc.nvsoict@gmail.com
+- GitHub: missher03
 - Vai trong nhóm: Người gắn nhãn 2 kiêm giữ hồ sơ
 
 ## 2. Phần việc phụ trách
@@ -33,6 +34,7 @@
 
 - Sử dụng trợ lý AI (Antigravity) để lập kế hoạch chia việc song song (`task.md`), rà soát yêu cầu trong `CHECKPOINTS.md` / `RUBRIC.md`, kiểm tra cấu trúc các bảng trong `chi_so.md` và `ho_so_launch_v0.md`.
 - Tự kiểm tra lại các con số E1 (`82,83%`, `27,12%`, `4,25%`) bằng lệnh Python đọc `src/logix_requests.csv` với `keep_default_na=False`, kiểm tra `yaml.safe_load` trên `pilot_plan.yaml`, kiểm tra không dùng từ cấm trong `report/team/`, và đối chiếu toàn bộ nhãn `simulated`.
+- Dùng Claude soát bằng chứng trong hồ sơ nhóm NHKT để lập bản nháp `report/team/phieu_cham.md`; hội đồng nhóm 101 đọc lại từng dòng với hồ sơ của NHKT rồi chốt điểm 25/30.
 
 ## 6. Tự đánh giá
 

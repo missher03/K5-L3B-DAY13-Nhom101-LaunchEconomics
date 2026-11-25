@@ -33,6 +33,7 @@ Nhiệm vụ C (bảng lỗi và cách khắc phục): `report/team/bang_loi.md`
 - Claude (claude.ai), dùng trong phiên làm Lab 13:
   - Đề xuất nhãn thống nhất và quy tắc phân biệt cho ca 6, ca 17; soạn nháp bảng khắc phục 5 ca.
   - Chạy thử `src/lab13.py`, kiểm tra ô trống, dấu `?` và từ cấm trong `report/team/`; gợi ý cách điền `phieu_cham.md`; soạn nháp file này.
+  - Dùng Claude soát bằng chứng trong hồ sơ nhóm NHKT để lập bản nháp `report/team/phieu_cham.md`; hội đồng nhóm 101 đọc lại từng dòng với hồ sơ của NHKT rồi chốt điểm 25/30.
 - Cách kiểm tra: đối chiếu nhãn thống nhất với định nghĩa 5 loại trong đề bài và bảng tham khảo trong `docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md`; đọc lại từng dòng bảng khắc phục để chắc có event, ngưỡng, tần suất và đúng một vai trò; tự chạy `python lab13.py` thấy dòng `ĐẠT`.
 
 ## 6. Tự đánh giá

@@ -29,7 +29,7 @@ Nhóm dựng bộ hồ sơ launch v0 cho trợ lý hoàn phí của LogiX-VN đ�
 - **Kinh tế & Độ nhạy:** Chi phí mỗi việc thành công là **4.472 đ** [simulated] (gấp 16,3× hóa đơn 274,7 đ/yc); chi phí cả hệ thống là **5.865 đ/yc = 0,49×** của 12.000 đ [simulated]. Trong phạm vi pilot (`noi_dia` 2.696 đ = 0,22×, `hang_nang` 8.221 đ = 0,69×), cộng cố định 40 triệu/tháng cho **4.599 đ = 0,38×** ở 45.000 yc/tháng [simulated]. Ba yếu tố nhạy nhất: số ca làm lại (+51,8%), tỉ lệ xem lại (+40,7%), lương nhân viên (+23,1%) [simulated]. Nếu xem lại 100%, chi phí là **11.743–12.415 đ** (0,98–1,03×) [simulated].
 - **Lỗi & Chỉ số đợt chạy thử:** Đồng thuận gắn nhãn **18/20 = 90%**. Chỉ số chính đợt chạy thử **82,83%** (994/1.200), bỏ qua gợi ý **27,12%** (48/177), mở lại 7 ngày **4,25%** (51/1.200; trong phạm vi pilot 3,97%).
 - **Kế hoạch pilot & Đề xuất:** Chia theo `staff` (20 nhân viên/nhóm, MDE 0,06, `n_per_arm = 859` hiệu dụng / 5.980 thô). Đề xuất cuối: **Go có điều kiện** (4 điều kiện về khoá chống trùng, chấp nhận MDE 6 điểm, bật event `trace_id` đo thật và giảm xem lại theo bậc).
-- **Kết quả duyệt chéo Gate 2a:** `[Cập nhật sau buổi duyệt chéo 17:00–17:45]`
+- **Kết quả duyệt chéo Gate 2a:** Nhóm 101 làm hội đồng chấm nhóm NHKT **25/30** (đề xuất khớp bằng chứng 10 · số giả lập và phạm vi 5 · pilot ra được quyết định 10), quyết định **Go có điều kiện**; chi tiết trong [phieu_cham.md](phieu_cham.md). Phiếu chấm nhóm 101 nằm trong repo của nhóm làm hội đồng cho nhóm 101.
 
 ## 5. Khó khăn và cách xử lý
 

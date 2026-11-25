@@ -105,13 +105,13 @@ Chi phí cả hệ thống = tổng chi phí trợ lý + 12.000 đ × số yêu 
 
 Cột cuối chỉ tính tiền trợ lý (cách tính như A2), chưa cộng 12.000 đ cho số yêu cầu không thành công. Nếu cộng rồi chia cho số việc thành công thì được 8.456 đ, 7.144 đ và 7.196 đ [simulated].
 
-- Giới hạn nào rẻ nhất cho công ty? Có trùng với giới hạn cho chi phí mỗi việc thành công thấp nhất không? **Rẻ nhất cho công ty là 2 lần: 6.901.220 đ** [simulated], ít hơn 3 lần **136.365 đ** (7.037.585 − 6.901.220) và ít hơn 1 lần **548.561 đ** (7.449.781 − 6.901.220). **Không trùng**: chi phí mỗi việc thành công thấp nhất lại ở **1 lần** (4.111 đ [simulated]). Chỉ tối ưu số đó sẽ đẩy thêm **85 việc** (319 − 234) sang nhân viên và làm công ty tốn thêm 548.561 đ.
+- Giới hạn nào rẻ nhất cho công ty? Có trùng với giới hạn cho chi phí mỗi việc thành công thấp nhất không? **Rẻ nhất cho công ty là 2 lần: 6.901.220 đ** [simulated], ít hơn 3 lần **136.365 đ** [simulated] (7.037.585 − 6.901.220) và ít hơn 1 lần **548.561 đ** [simulated] (7.449.781 − 6.901.220). **Không trùng**: chi phí mỗi việc thành công thấp nhất lại ở **1 lần** (4.111 đ [simulated]). Chỉ tối ưu số đó sẽ đẩy thêm **85 việc** (319 − 234) sang nhân viên và làm công ty tốn thêm 548.561 đ [simulated].
 
 ## B4 · Nếu phải xem lại tất cả
 
 Cách tính cho 982 yêu cầu `noi_dia` + `hang_nang`: token + tool 224.513 đ, cộng 948 yêu cầu có ít nhất một lần chạy ok × 5 phút × 2.000 đ = 9.480.000 đ, cộng 48 ca làm lại × 9 phút × 2.000 đ = 864.000 đ, được 10.568.513 đ; chia cho 900 việc thành công.
 
-- Chi phí mỗi việc thành công khi xem lại 100% (`noi_dia` + `hang_nang`), so với 12.000 đ: **11.743 đ = 0,98×** của 12.000 đ [simulated], tức gần như hoà. Nếu mỗi ca làm lại mất **15,3 phút** như trung bình cột `phut_lam_lai_simulated` của 74 ca (thay vì 9 phút) thì **12.415 đ = 1,03×** [simulated], đắt hơn nhân viên tự làm. Mức hoà vốn: mỗi lần xem lại tối đa **5,12 phút** (làm lại 9 phút) hoặc **4,80 phút** (làm lại 15,3 phút).
+- Chi phí mỗi việc thành công khi xem lại 100% (`noi_dia` + `hang_nang`), so với 12.000 đ: **11.743 đ = 0,98×** của 12.000 đ [simulated], tức gần như hoà. Nếu mỗi ca làm lại mất **15,3 phút** như trung bình cột `phut_lam_lai_simulated` của 74 ca (thay vì 9 phút) thì **12.415 đ = 1,03×** [simulated], đắt hơn nhân viên tự làm. Mức hoà vốn: mỗi lần xem lại tối đa **5,12 phút** (làm lại 9 phút) hoặc **4,80 phút** (làm lại 15,3 phút) [simulated].
 - Kết quả này nói gì về thứ pilot cần học được? Xem lại 100% thì trợ lý gần như không tiết kiệm, vì tiền xem lại (9.480.000 đ) chiếm **89,7%** của tổng 10.568.513 đ [simulated]. Pilot phải học được hai số: **tỉ lệ xem lại** giảm an toàn được bao nhiêu phần trăm, và mỗi lần xem lại có ngắn hơn **5,12 phút** (hoặc **4,80 phút**) không. Phút `_simulated` phải được thay bằng phút đo thật sau tuần **1**.
 
 ## Đối chiếu tay

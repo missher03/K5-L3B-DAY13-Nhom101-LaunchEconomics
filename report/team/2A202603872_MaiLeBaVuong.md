@@ -30,9 +30,9 @@
 ## 5. Công cụ AI đã dùng
 
 - Dùng ChatGPT/Codex để hỗ trợ viết hàm tính, điền bản nháp kế hoạch và giải thích cách tính cỡ mẫu.
-- Đối chiếu các số E1 bằng cách đọc CSV và so với mốc trong hướng dẫn. Môi trường hiện tại chưa có Python, nên chưa chạy được script bằng Python hoặc kiểm tra `yaml.safe_load`.
+- Đối chiếu các số E1 bằng cách đọc CSV và so với mốc trong hướng dẫn. Ngày 25/11 nhóm đã chạy lại `python3 lab13.py` (in ba phép thử ĐẠT, D1 và E1 khớp) và `yaml.safe_load` trên `pilot_plan.yaml` (đọc được, không còn dấu `?`).
 
 ## 6. Tự đánh giá
 
 - Đã chuẩn bị phần D1, D2 và E1, đồng thời nêu rõ đánh đổi power 0,64 khi thiết kế cho mức chênh 6 điểm.
-- Phạm vi đã được cập nhật theo A3 của TV1. Cần chạy `lab13.py` và kiểm tra YAML bằng `yaml.safe_load` khi có Python trước khi nộp.
+- Phạm vi đã được cập nhật theo A3 của TV1. `lab13.py` và kiểm tra YAML đã chạy đạt trước khi nộp.

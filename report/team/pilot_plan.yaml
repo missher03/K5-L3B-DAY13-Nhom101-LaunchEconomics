@@ -1,7 +1,7 @@
 # Lab 13 · Nhiệm vụ D · Kế hoạch pilot trợ lý hoàn phí LogiX-VN (Gate 2a)
 # D1 · Baseline 0,70; alpha 0,05; power 0,80; ICC 0,02.
-#   a) Chia theo yêu cầu, 70% → 75%: khoảng 1.251 yêu cầu mỗi nhóm.
-#   b) Theo nhân viên, m=75: DE=2,48; cần 3.103 yêu cầu thô và 42 nhân viên mỗi nhóm.
+#   a) Chia theo yêu cầu, 70% → 75%: 1.250 yêu cầu mỗi nhóm (lab13.py, NormalIndPower; z chính xác cho 1.251, lệch < 2%).
+#   b) Theo nhân viên, m=75: DE=2,48; cần 3.100 yêu cầu thô (1.250 × 2,48) và 42 nhân viên mỗi nhóm, tổng 84 > 40 người.
 #   c) 20 nhân viên mỗi nhóm: trần hiệu dụng 20/0,02=1.000, thấp hơn 1.251.
 #   d) 6 depot mỗi nhóm: trần hiệu dụng 6/0,02=300, thấp hơn 1.251.
 #   e) 70% → 76%: mốc lab 859 hiệu dụng mỗi nhóm; 20 nhân viên cần 299 yêu cầu/người,
@@ -71,8 +71,8 @@ pilot:
     predeclared: "Trước ngày bắt đầu chốt chỉ số chính, MDE 6 điểm, alpha 0,05, power 0,80, 859 hiệu dụng và 5.980 yêu cầu thô mỗi nhóm, seed 130101, luật dừng và ngày quyết định."
   stop_rules:
     - "NẾU tỷ lệ mở lại 7 ngày của nhóm can thiệp cao hơn đối chứng ít nhất 2 điểm phần trăm hoặc vượt 6% TRONG cửa sổ 7 ngày, hoặc xác nhận ít nhất 1 ca hoàn trùng THÌ Giám đốc vận hành tắt trợ lý trong 30 phút và chuyển yêu cầu sang nhân viên KHÔNG THÌ giữ nguyên mức rollout và không tăng bước."
-    - "NẾU chi phí mỗi việc thành công vượt 8.000 đ, tính từ trace và phút nhân viên đo thật TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí giới hạn phạm vi về noi_dia và tối đa 2 lần chạy KHÔNG THÌ chưa mở rộng sang hang_nang."
-    - "NẾU tỷ lệ sửa hoặc bỏ gợi ý vượt 40% số gợi ý được xem TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên trong 3 ngày và giữ nguyên rollout KHÔNG THÌ mới được xét chuyển bước sau khi rà chỉ số an toàn."
+    - "NẾU chi phí mỗi việc thành công vượt 8.000 đ, tính từ trace và phút nhân viên đo thật TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí giới hạn phạm vi về noi_dia và tối đa 2 lần chạy KHÔNG THÌ không được chuyển sang bước rollout tiếp theo."
+    - "NẾU tỷ lệ sửa hoặc bỏ gợi ý vượt 40% số gợi ý được xem TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên trong 3 ngày và giữ nguyên rollout KHÔNG THÌ không được chuyển bước rollout khi chưa phỏng vấn xong và chưa rà chỉ số an toàn."
   interim_looks: "Trong giai đoạn 10%, 25% và khi tích lũy mẫu ở 50%, chỉ xem chỉ số an toàn; chỉ phân tích chỉ số chính sau khi đủ mẫu mỗi nhóm và đủ 7 ngày theo dõi sau yêu cầu cuối."
   rollback: "Giám đốc vận hành LogiX-VN bấm cờ tắt; hiệu lực trong 30 phút. Mọi yêu cầu đang mở chuyển sang luồng nhân viên tự xử lý, giữ trace_id và thông báo trạng thái cho khách."
   start_date: "2026-12-07"

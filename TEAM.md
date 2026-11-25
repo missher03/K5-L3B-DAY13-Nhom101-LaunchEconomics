@@ -13,7 +13,7 @@
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 | Đỗ Quốc Khánh | 2A202603823 | 26ai.khanhdq2@vinuni.edu.vn | dqk2210 | Người viết code, nhiệm vụ A + B (`src/lab13.py`, `report/team/bang_chi_phi.md`) |
 |   2 | Mai Lê Bá Vương | 2A202603872 | Chưa cung cấp | Chưa cung cấp | Thành viên 2 — D1, D2, E1, kế hoạch pilot |
-|   3 | Đào Vũ Minh Khánh | 2A202603878 | Chưa cung cấp | Chưa cung cấp | Người gắn nhãn 1 (Nhiệm vụ C, QA & Hội đồng) |
+|   3 | Đào Vũ Minh Khánh | 2A202603878 | daovuminhkhanh@gmail.com | iamdvmk | Người gắn nhãn 1 (Nhiệm vụ C, QA & Hội đồng) |
 |   4 | Nguyễn Văn Quốc | 2A202603864 | quoc.nvsoict@gmail.com | missher03 | Người gắn nhãn 2 kiêm giữ hồ sơ (Nhiệm vụ C, E, Báo cáo) |
 
 Bốn vai của lab:
@@ -69,7 +69,7 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 - D1: 859 yêu cầu hiệu dụng và 5.980 yêu cầu thô mỗi nhóm, 299 yêu cầu mỗi nhân viên, design effect 6,96.
 - E1 trên dữ liệu giả lập: 994/1.200 = 82,83%; 48/177 = 27,12%; 51/1.200 = 4,25%.
 - A3 của TV1: chi phí mỗi việc thành công là 2.696 đ cho `noi_dia`, 8.221 đ cho `hang_nang`, 22.515 đ cho `quoc_te` và 10.215 đ cho `doi_tac` (simulated).
-- Tệp liên quan: `src/lab13.py`, `report/team/pilot_plan.yaml`, `report/team/chi_so.md`. Chạy Python và kiểm tra YAML bằng `yaml.safe_load` còn chờ môi trường có Python.
+- Tệp liên quan: `src/lab13.py`, `report/team/pilot_plan.yaml`, `report/team/chi_so.md`. Đã chạy `python3 lab13.py` (ba phép thử ĐẠT) và `yaml.safe_load` trên `pilot_plan.yaml` đạt (25/11).
 
 
 ## Đào Vũ Minh Khánh - 2A202603878
@@ -106,6 +106,7 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 ### Đóng góp cụ thể
 
+- Cùng Đào Vũ Minh Khánh chấm nhóm NHKT: 25/30, Go có điều kiện (`report/team/phieu_cham.md`).
 - Gắn nhãn độc lập 20 ca lỗi (đạt đồng thuận 18/20 = 90% với Đào Vũ Minh Khánh) trong `report/team/bang_loi.md`.
 - Hoàn thiện 2 chỉ số tự đề xuất, 10 event có `trace_id`, bảng kiểm tra chéo và 3 dòng rủi ro kinh tế E2 trong `report/team/chi_so.md`.
 - Tổng hợp đầy đủ 7 mục, trạng thái, vai trò phụ trách và 4 điều kiện đề xuất trong `report/team/ho_so_launch_v0.md`.
