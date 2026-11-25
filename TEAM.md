@@ -13,7 +13,7 @@
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 | Đỗ Quốc Khánh | 2A202603823 | 26ai.khanhdq2@vinuni.edu.vn | dqk2210 | Người viết code, nhiệm vụ A + B (`src/lab13.py`, `report/team/bang_chi_phi.md`) |
 |   2 | Mai Lê Bá Vương | 2A202603872 | Chưa cung cấp | Chưa cung cấp | Thành viên 2 — D1, D2, E1, kế hoạch pilot |
-|   3 | Đào Vũ Minh Khánh | 2A202603878 | Chưa cung cấp | Chưa cung cấp | Người gắn nhãn 1 (Nhiệm vụ C, QA & Hội đồng) |
+|   3 | Đào Vũ Minh Khánh | 2A202603878 | 26ai.khanhdvm@vinuni.edu.vn | iamdvmk | Người gắn nhãn 1 (Nhiệm vụ C, QA & Hội đồng) |
 |   4 | Nguyễn Văn Quốc | 2A202603864 | quoc.nvsoict@gmail.com | missher03 | Người gắn nhãn 2 kiêm giữ hồ sơ (Nhiệm vụ C, E, Báo cáo) |
 
 Bốn vai của lab:
