@@ -5,6 +5,8 @@ Bản gốc chưa sửa nằm ở lab13_starter.py.
 """
 import math
 import pandas as pd
+from statsmodels.stats.power import NormalIndPower
+from statsmodels.stats.proportion import proportion_effectsize
 
 # Bảng giá GIẢ ĐỊNH của lab (không phải giá thật của nhà cung cấp nào)
 GIA_VAO = 26        # đồng cho 1.000 token đầu vào
@@ -119,6 +121,153 @@ def mo_hinh(runs, reqs, gia_vao=26, gia_ra=130, gia_tool=15, luong_phut=2000,
         'thanh_cong': thanh_cong,
         'cps': cps,
     }
+
+
+def tinh_d1():
+    """Tính cỡ mẫu hai nhóm, hiệu ứng cụm và power cho phương án D1."""
+    baseline_rate = 0.70
+    target_5pp = 0.75
+    target_6pp = 0.76
+    alpha = 0.05
+    target_power = 0.80
+    icc = 0.02
+    power_model = NormalIndPower()
+
+    effect_5pp = abs(proportion_effectsize(baseline_rate, target_5pp))
+    n_5pp_exact = power_model.solve_power(
+        effect_size=effect_5pp,
+        alpha=alpha,
+        power=target_power,
+        ratio=1,
+        alternative='two-sided',
+    )
+    n_5pp = math.ceil(n_5pp_exact)
+
+    mean_per_staff = 75
+    de_75 = 1 + (mean_per_staff - 1) * icc
+    clustered_raw_n = math.ceil(n_5pp * de_75)
+    staff_per_arm = math.ceil(clustered_raw_n / mean_per_staff)
+
+    max_effective_20_staff = 20 / icc
+    max_effective_6_depots = 6 / icc
+
+    effect_6pp = abs(proportion_effectsize(baseline_rate, target_6pp))
+    n_6pp_exact = power_model.solve_power(
+        effect_size=effect_6pp,
+        alpha=alpha,
+        power=target_power,
+        ratio=1,
+        alternative='two-sided',
+    )
+    n_6pp_statsmodels = math.ceil(n_6pp_exact)
+    n_6pp_lab = 859
+    staff_count = 20
+    requests_per_staff = math.ceil(
+        n_6pp_lab * (1 - icc) / (staff_count - n_6pp_lab * icc)
+    )
+    design_effect = 1 + (requests_per_staff - 1) * icc
+    raw_requests_6pp = staff_count * requests_per_staff
+    effective_n_6pp = raw_requests_6pp / design_effect
+    power_at_5pp = power_model.power(
+        effect_size=effect_5pp,
+        nobs1=effective_n_6pp,
+        alpha=alpha,
+        ratio=1,
+        alternative='two-sided',
+    )
+
+    return {
+        'n_5pp_exact': n_5pp_exact,
+        'n_5pp': n_5pp,
+        'de_75': de_75,
+        'clustered_raw_n': clustered_raw_n,
+        'staff_per_arm': staff_per_arm,
+        'max_effective_20_staff': max_effective_20_staff,
+        'max_effective_6_depots': max_effective_6_depots,
+        'n_6pp_exact': n_6pp_exact,
+        'n_6pp_statsmodels': n_6pp_statsmodels,
+        'n_6pp_lab': n_6pp_lab,
+        'requests_per_staff': requests_per_staff,
+        'design_effect': design_effect,
+        'raw_requests_6pp': raw_requests_6pp,
+        'effective_n_6pp': effective_n_6pp,
+        'power_at_5pp': power_at_5pp,
+    }
+
+
+def tinh_e1(reqs):
+    """Tính ba chỉ số E1 và tỷ lệ mở lại trong phạm vi pilot dự kiến."""
+    primary_success = (reqs['dong_trong_24h'] == 1) & (
+        reqs['mo_lai_trong_7_ngay'] == 0
+    )
+    reviewed = reqs[reqs['duoc_xem_lai'] == 1]
+    ignored = reviewed['quyet_dinh_xem_lai'].isin(['sua', 'bo'])
+    scope = reqs[reqs['loai'].isin(['noi_dia', 'hang_nang'])]
+
+    return {
+        'primary': (int(primary_success.sum()), len(reqs)),
+        'usage': (int(ignored.sum()), len(reviewed)),
+        'safety': (int((reqs['mo_lai_trong_7_ngay'] == 1).sum()), len(reqs)),
+        'scope_reopen': (
+            int((scope['mo_lai_trong_7_ngay'] == 1).sum()),
+            len(scope),
+        ),
+    }
+
+
+def in_ket_qua_d1(result):
+    print('\nD1 · Cỡ mẫu (statsmodels NormalIndPower, hai phía)')
+    print(
+        f"a) 70% → 75%: n={result['n_5pp_exact']:.2f} trước làm tròn, "
+        f"{result['n_5pp']:,} yêu cầu/nhóm"
+    )
+    print(
+        f"b) m=75, ICC=0.02: DE={result['de_75']:.2f}, "
+        f"{result['clustered_raw_n']:,} yêu cầu thô/nhóm, "
+        f"{result['staff_per_arm']} nhân viên/nhóm"
+    )
+    print(
+        f"c) 20 nhân viên/nhóm: trần hiệu dụng c/ICC="
+        f"{result['max_effective_20_staff']:,.0f}, thấp hơn "
+        f"{result['n_5pp']:,} cần cho mức chênh 5 điểm"
+    )
+    print(
+        f"d) 6 depot/nhóm: trần hiệu dụng c/ICC="
+        f"{result['max_effective_6_depots']:,.0f}, thấp hơn "
+        f"{result['n_5pp']:,} cần cho mức chênh 5 điểm"
+    )
+    print(
+        f"e) 70% → 76%: statsmodels n={result['n_6pp_exact']:.2f} "
+        f"(làm tròn {result['n_6pp_statsmodels']:,}); dùng mốc lab "
+        f"{result['n_6pp_lab']:,} hiệu dụng/nhóm; với 20 nhân viên cần "
+        f"{result['requests_per_staff']} yêu cầu/người, "
+        f"{result['raw_requests_6pp']:,} thô/nhóm, "
+        f"DE={result['design_effect']:.2f}"
+    )
+    print(
+        f"   Power nếu tác động thật là 5 điểm: "
+        f"{result['power_at_5pp']:.3f}"
+    )
+
+
+def in_ket_qua_e1(result):
+    print('\nE1 · Chỉ số trong đợt chạy thử (không có nhóm đối chứng)')
+    labels = [
+        ('Chính · đóng trong 24h, không mở lại 7 ngày', 'primary'),
+        ('Dùng · bỏ qua gợi ý (sửa hoặc bỏ)', 'usage'),
+        ('An toàn · mở lại trong 7 ngày', 'safety'),
+    ]
+    for label, key in labels:
+        numerator, denominator = result[key]
+        rate = numerator / denominator if denominator else float('nan')
+        print(f'{label}: {numerator}/{denominator} = {rate:.2%} [simulated]')
+
+    numerator, denominator = result['scope_reopen']
+    rate = numerator / denominator if denominator else float('nan')
+    print(
+        f'Mở lại trong phạm vi noi_dia + hang_nang: '
+        f'{numerator}/{denominator} = {rate:.2%} [simulated]'
+    )
 
 
 if __name__ == '__main__':
@@ -281,6 +430,8 @@ if __name__ == '__main__':
     in_b4(f'Làm lại {rework_mean:.1f} phút/ca (trung bình {int((rework_minutes > 0).sum())} ca lam_lai '
           f'của cả mẫu, cột simulated)', simulated_rework_cost)
 
-    # TODO CP4 · Nhiệm vụ D: cỡ mẫu; thành viên 2 bổ sung.
-    #   from statsmodels.stats.proportion import proportion_effectsize
-    #   from statsmodels.stats.power import NormalIndPower
+    # D1 · Cỡ mẫu hai nhóm và hiệu chỉnh thiết kế theo cụm.
+    in_ket_qua_d1(tinh_d1())
+
+    # E1 · Chỉ số của đợt chạy thử, tính từ cùng DataFrame reqs đã đọc ở đầu.
+    in_ket_qua_e1(tinh_e1(reqs))

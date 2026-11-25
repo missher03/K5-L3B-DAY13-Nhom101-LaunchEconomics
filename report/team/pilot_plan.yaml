@@ -1,51 +1,84 @@
 # Lab 13 · Nhiệm vụ D · Kế hoạch pilot trợ lý hoàn phí LogiX-VN (Gate 2a)
-# Điền mọi chỗ có dấu hỏi. Khi nộp, ngoài các dòng chú thích không còn dấu hỏi nào.
-# Kiểm tra đọc được: python -c "import yaml; yaml.safe_load(open('../report/team/pilot_plan.yaml'))"
-#
-# D1 · Cỡ mẫu (baseline 0,70; mục tiêu +5 điểm; alpha 0,05; power 0,8; ICC 0,02)
-#   a) Chia theo yêu cầu:
-#   b) Theo nhân viên, m = 75:
-#   c) 20 nhân viên mỗi nhóm:
-#   d) 6 depot mỗi nhóm:
-#   e) Mức chênh 6 điểm (859 mỗi nhóm), 20 nhân viên mỗi nhóm:
-#
-# D2 · Năm câu kiểm tra "tách được tác động" với cách chia đã chọn (mỗi câu một dòng):
-#   1. Đối chứng chạy cùng thời gian:
-#   2. Chia ngẫu nhiên hay do người chọn:
-#   3. Ảnh hưởng gián tiếp và cách giảm:
-#   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước:
-#   5. Ít nhất 20 cụm mỗi nhóm:
-#
-# Đánh đổi đã chấp nhận (nếu cách chia chưa đạt cả hai điều kiện):
-#
-# Tỉ lệ mo_lai_trong_7_ngay hiện tại và ngưỡng an toàn đã chọn:
+# D1 · Baseline 0,70; alpha 0,05; power 0,80; ICC 0,02.
+#   a) Chia theo yêu cầu, 70% → 75%: khoảng 1.251 yêu cầu mỗi nhóm.
+#   b) Theo nhân viên, m=75: DE=2,48; cần 3.103 yêu cầu thô và 42 nhân viên mỗi nhóm.
+#   c) 20 nhân viên mỗi nhóm: trần hiệu dụng 20/0,02=1.000, thấp hơn 1.251.
+#   d) 6 depot mỗi nhóm: trần hiệu dụng 6/0,02=300, thấp hơn 1.251.
+#   e) 70% → 76%: mốc lab 859 hiệu dụng mỗi nhóm; 20 nhân viên cần 299 yêu cầu/người,
+#      5.980 yêu cầu thô mỗi nhóm, DE=6,96. Nếu tác động thật là 5 điểm, power≈0,64.
+#      Script in riêng ước lượng NormalIndPower theo Cohen h để đối chiếu; phép tính cụm dùng mốc 859 của đề.
+# D2 · Năm câu kiểm tra tách được tác động:
+#   1. Có 20 nhân viên đối chứng chạy đồng thời với 20 nhân viên can thiệp ở cùng depot.
+#   2. Bốc thăm nhân viên, phân tầng theo depot, ghi seed=130101 trước khi chạy.
+#   3. Có nguy cơ chia sẻ gợi ý trong depot; giới hạn quyền theo tài khoản và kiểm tra log staff_id mỗi 1 tuần.
+#   4. Chốt trước chỉ số chính, MDE=6 điểm, alpha, power, cỡ mẫu, luật dừng và ngày quyết định.
+#   5. Có 20 cụm nhân viên mỗi nhóm; dùng 299 yêu cầu/người để đạt 859 hiệu dụng mỗi nhóm.
+# Đánh đổi: 40 nhân viên không đủ lực cho MDE 5 điểm; chọn MDE 6 điểm, chấp nhận power≈0,64 nếu hiệu quả thật chỉ 5 điểm.
+# Tỉ lệ mở lại hiện tại là 51/1.200=4,25%; trong scope A3 noi_dia + hang_nang là 39/982=3,97%.
+# Luật an toàn so nhóm can thiệp với đối chứng bằng +2 điểm phần trăm và đặt trần tuyệt đối 6%.
+# Theo A3 của TV1, scope gồm noi_dia (2.696 đ; 0,22×) và hang_nang (8.221 đ; 0,69×) (simulated).
+# Để ngoài scope: quoc_te (22.515 đ; 1,88×) vì tỉ lệ thành công 27,3%, doi_tac (10.215 đ; 0,85×) vì điều khoản riêng (simulated).
+# Phân tuyển ở cả 12 depot, chia ngẫu nhiên theo nhân viên và cân bằng theo roster từng depot để có 20 cụm mỗi nhóm.
+# Lịch giả định: bắt đầu 2026-12-07; 10%, 25%, 50% lần lượt từ 07-12, 14-12, 21-12.
+# Ở bước 50%, đo ít nhất 5.980 yêu cầu mỗi nhóm; ước đạt sau 10 ngày theo 1.500 yêu cầu/ngày và 982/1.200 thuộc phạm vi (simulated).
+# Yêu cầu cuối dự kiến 2026-12-30; chờ đủ 7 ngày mở lại, ra quyết định dự kiến 2027-01-07.
+# Các tỷ lệ E1 hiện tại tính từ CSV giả lập; trong pilot phải thay số phút simulated bằng thời gian đo thật.
 
 pilot:
-  owner: "?"                      # một người có tên vai trò, không ghi "cả đội"
-  scope: "?"                      # loại yêu cầu nào, depot nào; dựa vào kết quả A3
+  owner: "Giám đốc vận hành LogiX-VN"
+  scope: "noi_dia + hang_nang tại 12 depot theo A3 của TV1. Chi phí mỗi việc thành công là 2.696 đ (0,22×) và 8.221 đ (0,69×) (simulated). Để ngoài pilot: quoc_te 22.515 đ (1,88×, thành công 27,3%) và doi_tac 10.215 đ (0,85×, điều khoản riêng) (simulated)."
   assignment:
-    unit: "?"                     # request | staff | depot
+    unit: "staff"
     control_share: 0.5
     randomized: true
-  rollout: [0.10, 0.25, 0.50]     # mỗi bước một tuần
+    seed: 130101
+    stratification: "Tuyển nhân viên ở cả 12 depot, phân tầng theo depot rồi bốc thăm 20 nhân viên can thiệp và 20 đối chứng; giữ cố định nhóm trong pilot."
+  rollout: [0.10, 0.25, 0.50]  # Bật lần lượt cho 4, 10, 20 nhân viên can thiệp; 20 đối chứng giữ nguyên.
+  rollout_schedule:
+    - stage: 0.10
+      starts: "2026-12-07"
+      ends: "2026-12-13"
+      intervention_staff_enabled: 4
+      control_staff: 20
+      interim_check: "Chỉ số an toàn"
+    - stage: 0.25
+      starts: "2026-12-14"
+      ends: "2026-12-20"
+      intervention_staff_enabled: 10
+      control_staff: 20
+      interim_check: "Chỉ số an toàn"
+    - stage: 0.50
+      starts: "2026-12-21"
+      ends: "2026-12-30 hoặc đến khi mỗi nhóm đủ 5.980 yêu cầu"
+      intervention_staff_enabled: 20
+      control_staff: 20
+      interim_check: "Chỉ số an toàn; phân tích chính sau khi đủ mẫu và theo dõi mở lại 7 ngày"
   primary_metric:
     name: dong_trong_24h_khong_mo_lai_7_ngay
     baseline: 0.70
-    mde: 0.05
+    mde: 0.06
     alpha: 0.05
     power: 0.80
-    n_per_arm: "?"
-    design_effect: "?"            # 1 nếu chia theo yêu cầu
-    clusters_per_arm: "?"         # để trống nếu chia theo yêu cầu
+    n_per_arm: 859             # Cỡ mẫu hiệu dụng theo mốc D1e.
+    n_raw_per_arm: 5980        # 299 yêu cầu/người × 20 nhân viên mỗi nhóm.
+    requests_per_cluster: 299
+    design_effect: 6.96
+    clusters_per_arm: 20
+    measurement_window: "Chỉ bắt đầu phân tích hiệu quả khi đủ 20 nhân viên mỗi nhóm và đủ 5.980 yêu cầu mỗi nhóm; sau yêu cầu cuối chờ đủ 7 ngày để đo mở lại."
   identifiability:
-    concurrent_control: "?"
-    spillover_risk: "?"
-    predeclared: "?"
+    concurrent_control: "Có; 20 nhân viên đối chứng làm cùng thời gian, cùng depot và cùng phạm vi yêu cầu."
+    spillover_risk: "Có; giới hạn quyền mở trợ lý theo tài khoản, log staff_id và rà truy cập chéo mỗi 1 tuần; phân tầng ngẫu nhiên theo depot."
+    predeclared: "Trước ngày bắt đầu chốt chỉ số chính, MDE 6 điểm, alpha 0,05, power 0,80, 859 hiệu dụng và 5.980 yêu cầu thô mỗi nhóm, seed 130101, luật dừng và ngày quyết định."
   stop_rules:
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-  interim_looks: "chỉ kiểm tra chỉ số an toàn"
-  rollback: "?"                   # ai bấm, mất bao lâu, khách được phục vụ bằng gì
-  decision_date: "?"
-  simulated_inputs: ["?"]         # liệt kê mọi con số giả lập đã dùng
+    - "NẾU tỷ lệ mở lại 7 ngày của nhóm can thiệp cao hơn đối chứng ít nhất 2 điểm phần trăm hoặc vượt 6% TRONG cửa sổ 7 ngày, hoặc xác nhận ít nhất 1 ca hoàn trùng THÌ Giám đốc vận hành tắt trợ lý trong 30 phút và chuyển yêu cầu sang nhân viên KHÔNG THÌ giữ nguyên mức rollout và không tăng bước."
+    - "NẾU chi phí mỗi việc thành công vượt 8.000 đ, tính từ trace và phút nhân viên đo thật TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí giới hạn phạm vi về noi_dia và tối đa 2 lần chạy KHÔNG THÌ chưa mở rộng sang hang_nang."
+    - "NẾU tỷ lệ sửa hoặc bỏ gợi ý vượt 40% số gợi ý được xem TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên trong 3 ngày và giữ nguyên rollout KHÔNG THÌ mới được xét chuyển bước sau khi rà chỉ số an toàn."
+  interim_looks: "Trong giai đoạn 10%, 25% và khi tích lũy mẫu ở 50%, chỉ xem chỉ số an toàn; chỉ phân tích chỉ số chính sau khi đủ mẫu mỗi nhóm và đủ 7 ngày theo dõi sau yêu cầu cuối."
+  rollback: "Giám đốc vận hành LogiX-VN bấm cờ tắt; hiệu lực trong 30 phút. Mọi yêu cầu đang mở chuyển sang luồng nhân viên tự xử lý, giữ trace_id và thông báo trạng thái cho khách."
+  start_date: "2026-12-07"
+  decision_date: "2027-01-07"
+  simulated_inputs:
+    - "Dữ liệu CSV giả lập: 1.500 yêu cầu/ngày và tỷ lệ scope 982/1.200."
+    - "Tỷ lệ mở lại 51/1.200=4,25% toàn mẫu và 39/982=3,97% trong scope A3 (simulated)."
+    - "Chi phí A3 theo loại: noi_dia 2.696 đ, hang_nang 8.221 đ, quoc_te 22.515 đ, doi_tac 10.215 đ mỗi việc thành công (simulated); quoc_te thành công 27,3%."
+    - "Phút xem lại và làm lại trong dữ liệu CSV đều là simulated; pilot phải thay bằng thời gian đo thật."
