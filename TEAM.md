@@ -13,8 +13,8 @@
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 | Đỗ Quốc Khánh | 2A202603823 | 26ai.khanhdq2@vinuni.edu.vn | dqk2210 | Người viết code, nhiệm vụ A + B (`src/lab13.py`, `report/team/bang_chi_phi.md`) |
 |   2 | Mai Lê Bá Vương | 2A202603872 | Chưa cung cấp | Chưa cung cấp | Thành viên 2 — D1, D2, E1, kế hoạch pilot |
-|   3 |        |      |       |        |         |
-|   4 |        |      |       |        |         |
+|   3 | Đào Vũ Minh Khánh | 2A202603878 | Chưa cung cấp | Chưa cung cấp | Người gắn nhãn 1 (Nhiệm vụ C, QA & Hội đồng) |
+|   4 | Nguyễn Văn Quốc | 2A202603864 | quoc.nvsoict@gmail.com | missher03 | Người gắn nhãn 2 kiêm giữ hồ sơ (Nhiệm vụ C, E, Báo cáo) |
 
 Bốn vai của lab:
 
@@ -95,16 +95,23 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 - `report/team/phieu_cham.md`: điểm và quyết định của hội đồng ghi tại buổi duyệt chéo 17:00.
 
 
-## Thành viên còn lại
+## Nguyễn Văn Quốc — 2A202603864
 
 ### Phần việc phụ trách
 
--
+- Người gắn nhãn 2 (Nhiệm vụ C — gắn nhãn độc lập 20 ca lỗi trong `report/team/bang_loi.md`).
+- Giữ hồ sơ `report/team/ho_so_launch_v0.md` và tổng hợp báo cáo nhóm `report/team/group_report.md`.
+- Hoàn thiện danh sách event có `trace_id`, kiểm tra chéo và bảng rủi ro kinh tế E2 trong `report/team/chi_so.md`.
+- Tham gia hội đồng chấm chéo Gate 2a (`report/team/phieu_cham.md`).
 
 ### Đóng góp cụ thể
 
--
+- Gắn nhãn độc lập 20 ca lỗi (đạt đồng thuận 18/20 = 90% với Đào Vũ Minh Khánh) trong `report/team/bang_loi.md`.
+- Hoàn thiện 2 chỉ số tự đề xuất, 10 event có `trace_id`, bảng kiểm tra chéo và 3 dòng rủi ro kinh tế E2 trong `report/team/chi_so.md`.
+- Tổng hợp đầy đủ 7 mục, trạng thái, vai trò phụ trách và 4 điều kiện đề xuất trong `report/team/ho_so_launch_v0.md`.
+- Hoàn thiện báo cáo nhóm `report/team/group_report.md` và cập nhật `TEAM.md`.
 
 ### Bằng chứng
 
--
+- `report/team/bang_loi.md`, `report/team/chi_so.md`, `report/team/ho_so_launch_v0.md`, `report/team/group_report.md`.
+- Báo cáo cá nhân: `report/team/2A202603864_NguyenVanQuoc.md`.
